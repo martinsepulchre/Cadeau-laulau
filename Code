@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Joyeux anniversaire ma Laulau</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    #gift-box {
+      margin-top: 15vh;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    #gift-box:hover {
+      transform: scale(1.1);
+    }
+    #content {
+      display: none;
+      margin-top: 3rem;
+      animation: fadeIn 2s;
+    }
+    .message {
+      margin: 1.5rem auto;
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+    #final-surprise {
+      display: none;
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+    .photo {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    #reply-button {
+      margin-top: 3rem;
+      background: #fff;
+      color: #333;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Joyeux anniversaire ma Laulau 💛</h1>
+  <img id="gift-box" src="https://cdn-icons-png.flaticon.com/512/3649/3649464.png" width="150" alt="Cadeau" onclick="openGift()">
+  <div id="content">
+    <div class="message">Parce que c’est que le début…</div>
+    <div class="message">Parce que ça finira pas.</div>
+    <div class="message">Parce que c’est le début de notre voyage 🗺️</div>
+    <div class="message">Parce qu’on a enfin terminé cette année à distance ❤️</div>
+    <div class="message">Et parce que tout ce qui vient sera encore plus beau…</div>
+    <div id="gallery">
+      <img class="photo" src="images/photo1.JPG" alt="photo">
+      <img class="photo" src="images/photo2.JPG" alt="photo">
+      <img class="photo" src="images/photo3.JPG" alt="photo">
+      <img class="photo" src="images/photo4.JPG" alt="photo">
+      <img class="photo" src="images/photo5.JPG" alt="photo">
+      <img class="photo" src="images/photo6.JPG" alt="photo">
+      <img class="photo" src="images/photo7.JPG" alt="photo">
+      <img class="photo" src="images/photo8.JPG" alt="photo">
+    </div>
+    <div id="final-surprise">🎉 Et ton cadeau : on va voir <strong>Gad Elmaleh</strong> ensemble en spectacle ! 🎭💙</div>
+    <button id="reply-button" onclick="window.open('mailto:tonadresse@mail.com?subject=Réponse à ton cadeau 💌')">Répondre à ce message 💌</button>
+  </div>
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_403802b94a.mp3" type="audio/mp3">
+    Ton navigateur ne supporte pas l'audio.
+  </audio>
+  <script>
+    function openGift() {
+      document.getElementById('gift-box').style.display = 'none';
+      const content = document.getElementById('content');
+      content.style.display = 'block';
+      const messages = content.querySelectorAll('.message');
+      let index = 0;
+      function showNext() {
+        if (index < messages.length) {
+          messages[index].style.display = 'block';
+          index++;
+          setTimeout(showNext, 1500);
+        } else {
+          document.getElementById('final-surprise').style.display = 'block';
+        }
+      }
+      messages.forEach(m => m.style.display = 'none');
+      showNext();
+    }
+  </script>
+</body>
+</html>
